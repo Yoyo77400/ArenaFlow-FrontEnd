@@ -1,3 +1,4 @@
+// app/root.tsx
 import type { Route } from "./+types/root";
 import {
   isRouteErrorResponse,
@@ -9,6 +10,8 @@ import {
 } from "react-router";
 
 import "./app.css";
+import { WalletProvider } from "./features/wallet/context";
+import { Navbar } from "./components/layout/Navbar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.ico" },
@@ -46,7 +49,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <WalletProvider>
+       <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <Outlet />
+      </div>
+    </WalletProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
