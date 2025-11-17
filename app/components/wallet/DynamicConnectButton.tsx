@@ -1,5 +1,8 @@
 import { Button } from "../UI-UX/Button";
-import { useWallet } from "../../features/wallet/context";
+import {
+  DynamicConnectButton as DynamicConnectButtonInner,
+  useDynamicContext,
+} from "@dynamic-labs/sdk-react-core";
 
 function shortenAddress(address?: string) {
   if (!address) return "";
@@ -8,29 +11,36 @@ function shortenAddress(address?: string) {
 }
 
 export function DynamicConnectButton() {
-  const { connected, address, connect, disconnect } = useWallet();
+  const { user, primaryWallet, handleLogOut } = useDynamicContext();
 
-  // TODO : remplacer ce handler par l'intégration réelle Dynamic
-  function handleConnectClick() {
-    // Exemple plus tard :
-    // dynamicSdk.showAuthFlow();
-    connect();
-  }
+  const address = primaryWallet?.address;
 
-  if (!connected) {
+  // PAS connecté → bouton qui ouvre le flow Dynamic
+  if (!user) {
     return (
-      <Button type="button" variant="primary" onClick={handleConnectClick}>
-        Connexion Dynamic Wallet
-      </Button>
+      <DynamicConnectButtonInner>
+        <Button type="button" variant="primary">
+          Connexion Dynamic Wallet
+        </Button>
+      </DynamicConnectButtonInner>
     );
   }
 
+  // 🔐 Connecté → afficher l’adresse + bouton de déconnexion
   return (
     <div className="flex items-center gap-2">
-      <span className="hidden sm:inline-block text-xs font-mono text-slate-300 bg-slate-900 px-2 py-1 rounded-full">
-        {shortenAddress(address)}
-      </span>
-      <Button type="button" variant="ghost" onClick={disconnect}>
+      {address && (
+        <span className="hidden sm:inline-block text-xs font-mono text-slate-300 bg-slate-900 px-2 py-1 rounded-full">
+          {shortenAddress(address)}
+        </span>
+      )}
+      <Button
+        type="button"
+        variant="ghost"
+        onClick={() => {
+          void handleLogOut();
+        }}
+      >
         Déconnexion
       </Button>
     </div>
