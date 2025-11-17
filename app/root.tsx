@@ -5,10 +5,19 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
+  ScrollRestoration
 } from "react-router";
-
+import {
+  DynamicContextProvider,
+  DynamicWidget,
+} from "@dynamic-labs/sdk-react-core";
+import { Loader } from "./components/UI-UX/Loader";
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import "./app.css";
+import { Navbar } from "./components/layout/Navbar";
+import { HydrationGate } from "./components/layout/HydratationGate";
+const dynamicEnvironmentId = import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID!;
+console.log("Dynamic Environment ID:", dynamicEnvironmentId);
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.ico" },
@@ -26,6 +35,7 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap",
   },
 ];
+
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -46,7 +56,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+  <HydrationGate fallback={<Loader />}  minDelay={1800}>
+    <DynamicContextProvider
+      settings={{
+        environmentId: dynamicEnvironmentId || "7ab62c67-477e-4cf0-a773-8eb0d7655e16",
+        walletConnectors: [EthereumWalletConnectors],
+      }}>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <Outlet />
+      </div>
+      <DynamicWidget />
+    </DynamicContextProvider>
+  </HydrationGate> 
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

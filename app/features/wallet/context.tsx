@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+// app/features/wallet/context.tsx
+import type { ReactNode } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface WalletState {
   address?: string;
@@ -10,9 +12,7 @@ interface WalletContextValue extends WalletState {
   disconnect: () => void;
 }
 
-const WalletContext = createContext<WalletContextValue | undefined>(
-  undefined,
-);
+const WalletContext = createContext<WalletContextValue | undefined>(undefined);
 
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<WalletState>({
