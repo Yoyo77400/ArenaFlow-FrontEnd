@@ -1,7 +1,6 @@
-import type { Route } from "../+types/dashboard.checkin";
 import { CheckInPanel } from "../../features/checkin/components/CheckInPanel";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [{ title: "Check-in • ArenaFlow" }];
 }
 

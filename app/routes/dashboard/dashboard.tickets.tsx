@@ -1,4 +1,4 @@
-import type { Route } from "../+types/dashboard.tickets";
+import type { Route } from "./+types/dashboard.tickets";
 import { TicketList } from "../../features/tickets/components/TicketList";
 
 export function meta({}: Route.MetaArgs) {

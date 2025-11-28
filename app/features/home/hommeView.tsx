@@ -1,7 +1,6 @@
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
+import logoDark from "./assets/logo-dark.svg";
+import logoLight from "./assets/logo-light.svg";
 import { Link } from "react-router";
-import { Navbar } from "../components/layout/Navbar";
 
 const links = [
   {
@@ -14,7 +13,7 @@ const links = [
   },
 ];
 
-export function Welcome() {
+export function HomeView() {
   return (
     <>
       <main className="flex items-center justify-center pt-16 pb-6">

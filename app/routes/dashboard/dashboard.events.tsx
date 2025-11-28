@@ -1,7 +1,6 @@
-import type { Route } from "../+types/dashboard.events";
 import { mockEvents } from "../../features/tickets/api/mockTickets";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [{ title: "Événements • ArenaFlow" }];
 }
 

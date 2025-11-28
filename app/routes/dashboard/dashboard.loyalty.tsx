@@ -1,7 +1,6 @@
-import type { Route } from "../+types/dashboard.loyalty";
 import { LoyaltySummary } from "../../features/loyalty/components/LoyaltySummary";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [{ title: "Loyalty • ArenaFlow" }];
 }
 
