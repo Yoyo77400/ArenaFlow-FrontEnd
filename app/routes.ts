@@ -1,25 +1,19 @@
-import {
-  type RouteConfig,
-  index,
-  route,
-} from "@react-router/dev/routes";
+import { type RouteConfig, route, index, layout } from "@react-router/dev/routes"
 
 export default [
-  index("routes/home.tsx"),
+  // Public routes
+  index("routes/_index/route.tsx"),
+  route("marketplace", "routes/marketplace/route.tsx"),
 
-  // /dashboard/*
-  route("dashboard", "routes/dashboard/dashboard.layout.tsx", [
-    index("routes/dashboard/dashboard.index.tsx"),
-    route("events", "routes/dashboard/dashboard.events.tsx"),
-    route("tickets", "routes/dashboard/dashboard.tickets.tsx"),
-    route("loyalty", "routes/dashboard/dashboard.loyalty.tsx"),
-    route("checkin", "routes/dashboard/dashboard.checkin.tsx"),
+  // Dashboard routes (user)
+  layout("routes/dashboard/layout.tsx", [
+    route("dashboard", "routes/dashboard/route.tsx"),
+    route("dashboard/tickets", "routes/dashboard.tickets/route.tsx"),
   ]),
 
-  // /auth/*
-  route("auth", "routes/auth/auth.layout.tsx", [
-    route("login", "routes/auth/auth.login.tsx"),
-    route("register", "routes/auth/auth.register.tsx"),
-  ]),
-  route("about", "routes/about.tsx"),
-] satisfies RouteConfig;
+  // Admin routes
+  layout("routes/admin/layout.tsx", [route("admin", "routes/admin/route.tsx")]),
+
+  // Owner routes
+  layout("routes/owner/layout.tsx", [route("owner", "routes/owner/route.tsx")]),
+] satisfies RouteConfig

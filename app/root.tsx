@@ -1,105 +1,71 @@
-import type { Route } from "./+types/root";
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration
-} from "react-router";
+import type React from "react"
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router"
+import "./styles/globals.css"
 import {
   DynamicContextProvider,
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
-import { Loader } from "./components/UI-UX/Loader";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
-import "./app.css";
-import { Navbar } from "./components/layout/Navbar";
-import { HydrationGate } from "./components/layout/HydratationGate";
+import { Header } from "./components/layout/header";
 const dynamicEnvironmentId = import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID!;
-console.log("Dynamic Environment ID:", dynamicEnvironmentId);
-
-export const links: Route.LinksFunction = () => [
-  { rel: "icon", href: "/favicon.ico" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.googleapis.com",
-  },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap",
-  },
-];
-
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="en" className="dark">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <title>ArenaFlow - Web3 Ticketing</title>
+        <meta name="description" content="The future of event ticketing on the blockchain" />
       </head>
-      <body>
-        {children}
+      <body className="min-h-screen bg-background text-foreground antialiased">
+            {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
-  );
+  )
 }
 
 export default function App() {
   return (
-  <HydrationGate fallback={<Loader />}  minDelay={1800}>
     <DynamicContextProvider
-      settings={{
-        environmentId: dynamicEnvironmentId || "7ab62c67-477e-4cf0-a773-8eb0d7655e16",
-        walletConnectors: [EthereumWalletConnectors],
-      }}>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <Outlet />
-      </div>
+          settings={{
+          environmentId: dynamicEnvironmentId || "7ab62c67-477e-4cf0-a773-8eb0d7655e16",
+          walletConnectors: [EthereumWalletConnectors],
+          }}>
+
+      <Outlet />
       <DynamicWidget />
     </DynamicContextProvider>
-  </HydrationGate> 
-  );
+  )
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let title = "Oups";
-  let message = "Une erreur inattendue est survenue.";
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    if (error.status === 404) {
-      title = "404";
-      message = "La page demandée est introuvable.";
-    } else {
-      title = "Erreur";
-      message = error.statusText || message;
-    }
-  } else if (import.meta.env.DEV && error instanceof Error) {
-    message = error.message;
-    stack = error.stack;
-  }
-
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.log(error);
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <p className="mb-4">{message}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto rounded bg-neutral-900 text-xs">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
-  );
+    <html lang="en" className="dark">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Error - ArenaFlow</title>
+      </head>
+      <body className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <DynamicContextProvider
+          settings={{
+          environmentId: dynamicEnvironmentId || "7ab62c67-477e-4cf0-a773-8eb0d7655e16",
+          walletConnectors: [EthereumWalletConnectors],
+          }}>
+          <Header />
+        </DynamicContextProvider>
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-destructive mb-4">Oops!</h1>
+          <p className="text-muted-foreground mb-4">Something went wrong</p>
+          <pre className="text-sm text-left bg-card p-4 rounded-lg max-w-lg overflow-auto">{error.message}</pre>
+        </div>
+      </body>
+    </html>
+  )
 }
