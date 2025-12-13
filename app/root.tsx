@@ -1,13 +1,7 @@
-import type React from "react"
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router"
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useNavigate } from "react-router"
 import "./styles/globals.css"
-import {
-  DynamicContextProvider,
-  DynamicWidget,
-} from "@dynamic-labs/sdk-react-core";
-import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { Header } from "./components/layout/header";
-const dynamicEnvironmentId = import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID!;
+import { Providers } from "./providers";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -31,15 +25,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <DynamicContextProvider
-          settings={{
-          environmentId: dynamicEnvironmentId || "7ab62c67-477e-4cf0-a773-8eb0d7655e16",
-          walletConnectors: [EthereumWalletConnectors],
-          }}>
-
+    <Providers>
       <Outlet />
-      <DynamicWidget />
-    </DynamicContextProvider>
+    </Providers>
   )
 }
 
@@ -53,13 +41,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <title>Error - ArenaFlow</title>
       </head>
       <body className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <DynamicContextProvider
-          settings={{
-          environmentId: dynamicEnvironmentId || "7ab62c67-477e-4cf0-a773-8eb0d7655e16",
-          walletConnectors: [EthereumWalletConnectors],
-          }}>
+        <Providers>
           <Header />
-        </DynamicContextProvider>
+        </Providers>
         <div className="text-center">
           <h1 className="text-4xl font-bold text-destructive mb-4">Oops!</h1>
           <p className="text-muted-foreground mb-4">Something went wrong</p>

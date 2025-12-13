@@ -6,6 +6,7 @@ import { FeaturesSection } from "@app/components/home/features-section"
 import { HowItWorksSection } from "@app/components/home/how-it-works-section"
 import { EventsSection } from "@app/components/home/events-section"
 import { CtaSection } from "@app/components/home/cta-section"
+import { useEffect } from "react"
 
 export function meta() {
   return [
@@ -18,6 +19,7 @@ export function meta() {
 }
 
 export default function HomePage() {
+  useEffect(() => console.log("✅ useEffect BROWSER"), []);
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
