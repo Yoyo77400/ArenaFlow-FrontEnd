@@ -3,8 +3,7 @@ import { getAuthToken, useDynamicContext, useIsLoggedIn } from "@dynamic-labs/sd
 import { useState, useEffect, useMemo } from "react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router";
-import { ChevronDown, LogOut, LayoutDashboard } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@app/components/ui/avatar"
+import { ChevronDown, LogOut } from "lucide-react"
 import { cn } from "@app/utils/cn"
 import { formatAddress } from "@app/utils/format"
 import { useLocation } from "react-router";
@@ -40,8 +39,6 @@ export default function WalletConnection() {
   useEffect(() => { 
     if(isLoggedIn && token) {
       isAdmin(token).then(isAdmin => {
-        console.log(token);
-        console.log("isAdmin", isAdmin);
         setIsAdminState(isAdmin);
       }).catch(err => {
         console.error("Failed to check admin status", err);

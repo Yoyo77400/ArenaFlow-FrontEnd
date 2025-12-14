@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-background to-background" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-cyan-900/20 via-background to-background" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
@@ -26,7 +26,7 @@ export function HeroSection() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
               The Future of
-              <span className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="block bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 Event Ticketing
               </span>
             </h1>
@@ -73,14 +73,14 @@ export function HeroSection() {
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative w-80 transform rotate-3 hover:rotate-0 transition-transform duration-500">
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-50" />
+              <div className="absolute inset-0 bg-linear-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-50" />
 
               {/* Card */}
-              <div className="relative rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-800 p-6 shadow-2xl">
+              <div className="relative rounded-2xl border border-cyan-500/30 bg-linear-to-br from-slate-900 to-slate-800 p-6 shadow-2xl">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                    <div className="h-8 w-8 rounded-lg bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
                       <span className="text-xs font-bold text-white">A</span>
                     </div>
                     <span className="text-sm font-semibold text-white">ArenaFlow</span>
@@ -89,7 +89,7 @@ export function HeroSection() {
                 </div>
 
                 {/* Event Image */}
-                <div className="rounded-xl overflow-hidden mb-4 aspect-video bg-gradient-to-br from-cyan-600/20 to-blue-600/20 flex items-center justify-center">
+                <div className="rounded-xl overflow-hidden mb-4 aspect-video bg-linear-to-br from-cyan-600/20 to-blue-600/20 flex items-center justify-center">
                   <span className="text-4xl">🎵</span>
                 </div>
 

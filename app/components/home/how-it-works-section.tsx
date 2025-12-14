@@ -47,15 +47,15 @@ export function HowItWorksSection() {
             <div key={item.step} className="relative">
               {/* Connector Line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-12 left-[60%] w-full h-px bg-gradient-to-r from-cyan-500/50 to-transparent" />
+                <div className="hidden lg:block absolute top-12 left-[60%] w-full h-px bg-linear-to-r from-cyan-500/50 to-transparent" />
               )}
 
               <div className="relative flex flex-col items-center text-center">
                 <div className="relative mb-6">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
+                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-linear-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
                     <item.icon className="h-10 w-10 text-cyan-400" />
                   </div>
-                  <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-xs font-bold text-white">
+                  <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-r from-cyan-500 to-blue-600 text-xs font-bold text-white">
                     {item.step}
                   </span>
                 </div>

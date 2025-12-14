@@ -53,7 +53,7 @@ export function FeaturesSection() {
           {features.map((feature) => (
             <Card key={feature.title} className="group hover:border-cyan-500/50 transition-colors bg-card/50">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 mb-4 group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-cyan-500/10 to-blue-500/10 mb-4 group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-colors">
                   <feature.icon className="h-6 w-6 text-cyan-400" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
