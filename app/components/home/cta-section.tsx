@@ -11,7 +11,7 @@ export function CtaSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden">
           {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700" />
+          <div className="absolute inset-0 bg-linear-to-r from-cyan-600 to-blue-700" />
           <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] opacity-10" />
 
           <div className="relative px-8 py-16 sm:px-16 sm:py-24 text-center">

@@ -34,7 +34,7 @@ export function TicketsContent() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {ticketsWithEvents.map((ticket) => (
             <Card key={ticket.id} className="overflow-hidden">
-              <div className="relative aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+              <div className="relative aspect-video bg-linear-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
                 <span className="text-6xl">🎫</span>
                 <Badge className={`absolute top-3 right-3 ${TICKET_TIERS[ticket.tier].color} text-white border-0`}>
                   {TICKET_TIERS[ticket.tier].label}
