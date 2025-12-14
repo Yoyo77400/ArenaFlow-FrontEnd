@@ -36,13 +36,13 @@ export function EventsSection() {
 
             return (
               <Card key={event.id} className="group overflow-hidden hover:border-cyan-500/50 transition-all bg-card">
-                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
+                <div className="relative aspect-4/3 overflow-hidden bg-linear-to-br from-cyan-500/20 to-blue-500/20">
                   <img
-                    src={`/.jpg?height=300&width=400&query=${encodeURIComponent(event.title)}`}
+                    src={event.image}
                     alt={event.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                   <Badge className="absolute top-3 left-3" variant="info">
                     {event.category}
                   </Badge>

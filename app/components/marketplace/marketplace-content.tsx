@@ -100,7 +100,7 @@ export function MarketplaceContent() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {listingsWithEvents.map((listing) => (
             <Card key={listing.id} className="overflow-hidden group">
-              <div className="relative aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+              <div className="relative aspect-video bg-linear-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
                 <span className="text-5xl">🎫</span>
                 <Badge className={`absolute top-3 left-3 ${TICKET_TIERS[listing.tier].color} text-white border-0`}>
                   {TICKET_TIERS[listing.tier].label}

@@ -5,7 +5,7 @@
 "use client"
 
 import React from "react"
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { Home, Ticket, Activity, Settings, Calendar, BarChart3, Users, CreditCard, TrendingUp } from "lucide-react"
 import { cn } from "@app/utils/cn"
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
@@ -29,7 +29,8 @@ interface SidebarProps {
 }
 
 export function Sidebar({ role: propRole }: SidebarProps) {
-  const pathname = window.location.pathname
+  const location = useLocation();
+  const pathname = location.pathname
   const {
     primaryWallet,
     user,
@@ -92,7 +93,7 @@ export function Sidebar({ role: propRole }: SidebarProps) {
         </nav>
 
         <div className="mt-auto pt-4 border-t border-border">
-          <div className="rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-4">
+          <div className="rounded-lg bg-linear-to-br from-cyan-500/10 to-blue-500/10 p-4">
             <p className="text-sm font-medium mb-1">Need Help?</p>
             <p className="text-xs text-muted-foreground mb-3">Check our documentation or contact support.</p>
             <Link to="/help" className="text-xs font-medium text-cyan-400 hover:underline">

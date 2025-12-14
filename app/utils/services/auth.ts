@@ -39,6 +39,8 @@ export async function isAdmin(token: string) {
             "Authorization": `Bearer ` + token,
         },
     });
+    console.log("verify-admin status", response.status);
+
     if (!response.ok) return false;
     
     const data = await response.json();

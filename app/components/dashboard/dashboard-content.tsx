@@ -69,7 +69,7 @@ export function DashboardContent() {
                   className="flex items-center justify-between p-4 rounded-lg border border-border bg-card/50"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-lg bg-linear-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
                       <Ticket className="h-6 w-6 text-cyan-400" />
                     </div>
                     <div>

@@ -73,7 +73,7 @@ export function OwnerContent() {
               return (
                 <div key={event.id} className="flex items-center justify-between p-4 rounded-lg border border-border">
                   <div className="flex items-center gap-4">
-                    <div className="h-16 w-16 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                    <div className="h-16 w-16 rounded-lg bg-linear-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
                       <Calendar className="h-8 w-8 text-cyan-400" />
                     </div>
                     <div>
